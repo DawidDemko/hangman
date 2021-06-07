@@ -1,5 +1,5 @@
 import random
-
+from datetime import date
 
 def language_choice():
     print(f"{nickname}, please select from the following \nSpanish\nPolish\nEnglish")
@@ -30,7 +30,7 @@ def secret_word():
 def difficulty():
     print(f"Do you like a challenge, {nickname}?"
           " Or are you a wee babe fresh from the womb?"
-          " Choose game difficulty (EASY/HARD/NIGHTMARE): ")
+          " \nChoose game difficulty (EASY/HARD/NIGHTMARE): ")
     ind = 1
     while ind > 0:
         diff_lvl = input().upper()
@@ -235,7 +235,21 @@ def hangman(tries):
 
 
 def main():
+    print(
+        "\n██╗░░██╗░█████╗░███╗░░██╗░██████╗░███╗░░░███╗░█████╗░███╗░░██╗"
+        "\n██║░░██║██╔══██╗████╗░██║██╔════╝░████╗░████║██╔══██╗████╗░██║"
+        "\n███████║███████║██╔██╗██║██║░░██╗░██╔████╔██║███████║██╔██╗██║"
+        "\n██╔══██║██╔══██║██║╚████║██║░░╚██╗██║╚██╔╝██║██╔══██║██║╚████║"
+        "\n██║░░██║██║░░██║██║░╚███║╚██████╔╝██║░╚═╝░██║██║░░██║██║░╚███║"
+        "\n╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝░╚═════╝░╚═╝░░░░░╚═╝╚═╝░░╚═╝╚═╝░░╚══╝")
+    input(
+            "\n         ╋╋╋╋╋╋┏━┳━┓╋╋╋╋╋┏┓╋╋╋╋╋┏┓╋╋╋┏━┳┓╋╋╋╋╋┏┓"
+            "\n         ┏━┳┳┳━┫━┫━┫┏━┳━┳┫┗┳━┳┳┓┃┗┳━┓┃━┫┗┳━┓┏┳┫┗┓"
+            "\n         ┃╋┃┏┫┻╋━┣━┃┃┻┫┃┃┃┏┫┻┫┏┛┃┏┫╋┃┣━┃┏┫╋┗┫┏┫┏┫"
+            "\n         ┃┏┻┛┗━┻━┻━┛┗━┻┻━┻━┻━┻┛╋┗━┻━┛┗━┻━┻━━┻┛┗━┛"
+            "\n         ┗┛")
     print('Welcome to Hangman \nWhat is it they call you?')
+    today = date.today()
     global wins
     wins = 0
     global losses
@@ -255,8 +269,8 @@ def main():
         if choice == 'RANKING':
             print(f"{nickname}, this is the ranking board for Hangman.")
             try:
-                leaderboard = open("leaderboard.txt", 'w')
-                leaderboard.write(nickname + "\nNumber of attempts:"
+                leaderboard = open("leaderboard.txt", 'a')
+                leaderboard.write("\n" + nickname + "---" + str(today) + "\nNumber of attempts:"
                                   + str(attempts) + "\nNumber of wins:"
                                   + str(wins) + "\nNumber of losses:" + str(losses) + "\n")
                 leaderboard.close()
@@ -293,8 +307,8 @@ def main():
                     elif decision == "RANKING":
                         print(f"{nickname}, this is the ranking board for Hangman.")
                         try:
-                            leaderboard = open("leaderboard.txt", 'w')
-                            leaderboard.write(nickname + "\nNumber of attempts:"
+                            leaderboard = open("leaderboard.txt", 'a')
+                            leaderboard.write("\n" + nickname + "---" + str(today) + "\nNumber of attempts:"
                                               + str(attempts) + "\nNumber of wins:"
                                               + str(wins) + "\nNumber of losses:" + str(losses) + "\n")
                             leaderboard.close()
